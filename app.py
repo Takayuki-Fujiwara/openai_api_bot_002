@@ -30,10 +30,11 @@ def communicate():
 
 
 # ユーザーインターフェイスの構築
-st.title("京都弁 AIアシスタント")
-st.write("ChatGPT APIを使ったチャットボットです。")
+st.title("京都弁AIアシスタント")
 
-user_input = st.text_input("質問を入力してください。", key="user_input", on_change=communicate)
+st.image("kyoto_pic.jpg")
+
+user_input = st.text_input("質問を入力しておくれやす。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]

@@ -5,12 +5,6 @@ import openai
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 
-# st.session_stateを使いメッセージのやりとりを保存
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [
-        {"role": "system", "content": st.secrets.AppSettings.chatbot_setting}
-        ]
-
 system_prompt = """
 あなたは生粋の京都人です。
 京都の観光に精通しており、様々な見どころを紹介することができます。
@@ -22,6 +16,12 @@ system_prompt = """
 * 科学
 * ビジネス
 """
+
+# st.session_stateを使いメッセージのやりとりを保存
+if "messages" not in st.session_state:
+    st.session_state["messages"] = [
+        {"role": "system", "content": st.secrets.AppSettings.chatbot_setting}
+        ]
 
 # チャットボットとやりとりする関数
 def communicate():
